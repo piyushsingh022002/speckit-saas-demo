@@ -1,36 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import { getTasks } from '../services/taskService';
-import { Task } from '../types/Task';
+// src/components/TaskList.tsx (updated)
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Tooltip } from '../ui/Tooltip';
+
+const TaskCard = styled.div`
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const Button = styled.button`
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
 
 const TaskList: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [tasks, setTasks] = useState([
+    { id: 1, title: 'Finish documentation', status: 'Active' },
+    { id: 2, title: 'Refactor code', status: 'Completed' },
+  ]);
 
-  useEffect(() => {
-    getTasks()
-      .then(setTasks)
-      .catch(() => setError('Failed to load tasks'))
-      .finally(() => setLoading(false));
-  }, []);
+  const handleAddTask = () => {
+    const newTask = {
+      id: tasks.length + 1,
+      title: 'New Task ' + (tasks.length + 1),
+      status: 'Active',
+    };
+    setTasks([...tasks, newTask]);
+  };
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 mt-10">{error}</div>;
+  const handleDeleteTask = (id: number) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
 
   return (
-    <div className="max-w-2xl mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-4">Tasks</h2>
-      <ul className="bg-white rounded shadow p-4">
-        {tasks.map(task => (
-          <li key={task.id} className="border-b last:border-b-0 py-2">
-            <div className="font-semibold">{task.title}</div>
-            {task.description && <div className="text-gray-600">{task.description}</div>}
-            {task.dueDate && <div className="text-sm text-gray-400">Due: {task.dueDate}</div>}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <Tooltip text="Click to add a new task!" id="add-task-btn" />
+      <Button id="add-task-btn" onClick={handleAddTask}>Add Task</Button>
+      {tasks.map(task => (
+        <TaskCard key={task.id}>
+          <h3>{task.title}</h3>
+          <p>Status: {task.status}</p>
+          <Button onClick={() => handleDeleteTask(task.id)}>Delete</Button>
+        </TaskCard>
+      ))}
     </div>
   );
 };
 
-export default TaskList;
+export { TaskList };

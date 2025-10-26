@@ -1,4 +1,5 @@
 import React from 'react';
+import { KnowledgeCard } from '../ui/KnowledgeCard';
 
 const Profile: React.FC = () => {
   // Placeholder for user profile info
@@ -7,6 +8,8 @@ const Profile: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4">User Profile</h2>
       <div className="text-gray-600">Profile details go here.</div>
     </div>
+
+    
   );
 };
 

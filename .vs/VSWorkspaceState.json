@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\frontend\\src"
+    "\\backend",
+    "\\backend\\SpeckitSaaSBackend"
   ],
-  "SelectedNode": "\\frontend",
+  "SelectedNode": "\\backend\\SpeckitSaaSBackend\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
