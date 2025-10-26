@@ -1,0 +1,6 @@
+@SpeckitSaaSBackend_HostAddress = http://localhost:5149
+
+GET {{SpeckitSaaSBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

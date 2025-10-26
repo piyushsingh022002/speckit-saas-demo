@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "6h1A0YJTcCo=",
+  "success": true,
+  "projectFilePath": "D:\\speckit-saas-demo\\backend\\SpeckitSaaSBackend\\SpeckitSaaSBackend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Piyush Singh\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "C:\\Users\\Piyush Singh\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
